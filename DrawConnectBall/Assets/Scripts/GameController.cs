@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    [SerializeField]
+    private List<Connect> _connects;
     // Start is called before the first frame update
     #region Close foor modification
     private BallController _startBall;
@@ -44,6 +46,15 @@ public class GameController : MonoBehaviour
     public LineType LineType { get => _lineType; set => _lineType = value; }
     public List<LineRenderer> Lines { get => _lines; set => _lines = value; }
     public bool CanUpdateLine { get => _canUpdateLine; set => _canUpdateLine = value; }
+    public List<LineRenderer> UsedLine { get => _usedLine; set => _usedLine = value; }
+    public List<Connect> Connects
+    {
+        get
+        {
+            if (_connects == null) _connects = new List<Connect>(); return _connects;
+        }
+        set => _connects = value;
+    }
 
     //public Dictionary<int, LineRenderer> Dict_lines { get => dict_lines; set => dict_lines = value; }
     #endregion
@@ -52,7 +63,7 @@ public class GameController : MonoBehaviour
     {
         CreateNewLine();
         //_line =FindObjectOfType<LineRenderer>();
-        UpdateLineIndex();
+        // UpdateLineIndex();
         _lines = FindObjectsOfType<LineRenderer>().ToList();
     }
     private void Awake()
@@ -83,15 +94,16 @@ public class GameController : MonoBehaviour
             IsHitBall();
             HandleCanUpdateLine();
         }
-        Debug.Log(isEnterBall + " isEnterBall");
+        //  Debug.Log(isEnterBall + " isEnterBall");
 
     }
+    // =================================this segment handle draw line==================================
     private void HandleCanUpdateLine()
     {
         if (!_canUpdateLine)
             return;
-            UpdateLine();
-        
+        UpdateLine();
+
     }
 
     private void UpdateLine()
@@ -152,10 +164,10 @@ public class GameController : MonoBehaviour
             // _numberOfDraw--;
             _secondBall = hit.collider.gameObject.GetComponent<BallController>();
             HandleListConnectedBall(_secondBall);
-            Debug.Log(_connectedBall.Count + " _connectedBall.Count");
+          //  Debug.Log(_connectedBall.Count + " _connectedBall.Count");
             HandleIfSameType();
-            Debug.Log("startPoint " + _startBall.name);
-            Debug.Log("secondPoint " + _secondBall.name);
+            //Debug.Log("startPoint " + _startBall.name);
+            //Debug.Log("secondPoint " + _secondBall.name);
         }
         else
         {
@@ -173,11 +185,10 @@ public class GameController : MonoBehaviour
         Vector2 mousePos = GetMousePos();
         if (_startBall.type == _secondBall.type)
         {
-            Debug.Log("Have the same type");
+           // Debug.Log("Have the same type");
             //if(Vector2.Distance(mousePos,_secondBall.transform.position)<= _distance)
             if (Vector2.Distance(_line.GetPosition(_line.positionCount - 1), _secondBall.transform.position) <= _distance)
             {
-                Debug.DrawLine(mousePos, _secondBall.transform.position, Color.red);
                 _line.positionCount++;
                 _line.SetPosition(_line.positionCount - 1, _secondBall.transform.position);
                 _connected = true;
@@ -187,7 +198,6 @@ public class GameController : MonoBehaviour
                 HandleIfOverLineNeed();
                 GrabNextLine();
             }
-
         }
         else
         {
@@ -197,12 +207,34 @@ public class GameController : MonoBehaviour
             ReturnResetLine();
         }
     }
+
+    private void AddConnectedBall()
+    {
+        Connect connect = new Connect();
+        var isAdded = connect.balls.Contains(_startBall.transform) || connect.balls.Contains(_secondBall.transform);
+        if (isAdded)
+            return;
+            connect.balls.Add(_startBall.transform);
+            connect.balls.Add(_secondBall.transform);
+        connect.line=_line;
+        foreach(var ball in connect.balls)
+        {
+            Debug.LogError(ball.name + "    test add saame ball");
+        }
+            AddNewConnect(connect);
+        _connects.ForEach(c => c.balls.ForEach(b => Debug.Log(b.name + "  connected ball name")));
+        Debug.LogAssertion(_connects.Count + "  _connects.Count");
+        
+    }
+
     private void HandleUsedLine()
     {
-        if(_connected)
+        if (_connected && !_usedLine.Contains(_line))
         {
             _usedLine.Add(_line);
+            AddConnectedBall();
         }
+
     }
 
     private void HandleIfOverLineNeed()
@@ -210,7 +242,7 @@ public class GameController : MonoBehaviour
         var isOverLine = IsOverNeededLine();
         if (isOverLine)
         {
-            _lines.First().enabled= false;
+            _lines.First().enabled = false;
             return;
         }
         CreateNewLine();
@@ -221,13 +253,9 @@ public class GameController : MonoBehaviour
     }
     private void GrabNextLine()
     {
-        //  var isLineIndexOver = _currentLineIndex > _balls.Count - 1;
         var isLineIndexOver = _currentLineIndex < 0;
         if (!_connected || isLineIndexOver) return;
-        //_currentLineIndex--;
-        // _currentLineIndex= _balls.Count - 1;
-        _currentLineIndex = _lines.Count - 2;
-        //_currentLineIndex = dict_lines.Count - 2;
+      //  _currentLineIndex = _lines.Count - 2;
     }
     private bool IsOverNeededLine()
     {
@@ -246,46 +274,20 @@ public class GameController : MonoBehaviour
         Debug.Log(_numberOfDraw + " numberofdraw");
         if (_numberOfDraw <= 0) return;
         var line = Instantiate(_linePrefab, GetMousePos(), Quaternion.identity);
-        line.name = "New Line";
+        line.name = "New Line " ;
         _lines = FindObjectsOfType<LineRenderer>().ToList();
 
 
-    }
-    private void CheckLineIntersect()
-    {
-        for (int i = 0; i < _lines[_currentLineIndex + 1].positionCount; i++)
-        {
-            for (int j = 0; j < _lines[_currentLineIndex].positionCount; j++)
-            {
-                var l1 = _lines[_currentLineIndex + 1].GetPosition(i);
-                var l2 = _lines[_currentLineIndex].GetPosition(j);
-
-            }
-        }
-    }
-    public bool CheckVector3ListsOverlap(List<Vector3> list1, List<Vector3> list2)
-    {
-        bool overlap = list1.Any(v1 => list2.Any(v2 => AreVectorsEqual(v1, v2)));
-        return overlap;
-    }
-
-    public bool AreVectorsEqual(Vector3 v1, Vector3 v2)
-    {
-        float epsilon = 0.0001f;
-        return Mathf.Abs(v1.x - v2.x) < epsilon
-            && Mathf.Abs(v1.y - v2.y) < epsilon
-            && Mathf.Abs(v1.z - v2.z) < epsilon;
     }
     public void ReturnResetLine()
     {
         ResetLine();
     }
 
-    //private void HandleLine()
-    //{
-    //    if(_connected)
-    //    {
-    //        _lines.Remove(_line);
-    //    }
-    //}
+    public void AddNewConnect(Connect connect)
+    {
+        Connects.Add(connect);
+    }
+
 }
+

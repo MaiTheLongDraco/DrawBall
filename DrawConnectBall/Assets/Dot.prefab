@@ -115,5 +115,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameControl: {fileID: 0}
-  _resetDrawNumber: 1
   type: 0
+  _colorToParse: {r: 1, g: 0, b: 0, a: 0}
+  _hexaColor: 
