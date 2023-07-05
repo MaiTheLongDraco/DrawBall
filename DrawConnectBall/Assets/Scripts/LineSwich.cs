@@ -24,6 +24,7 @@ public class LineSwich : MonoBehaviour
     private void OnMouseDown()
     {
         HandleAddConBallPermission();
+        IndentifyLineType();
         SetLineColor();
     }
     private void IndentifyLineType()
@@ -61,7 +62,7 @@ public class LineSwich : MonoBehaviour
             if(isContain)
             {
                 _gameControl.CurrentLineIndex = _gameControl.Lines.IndexOf(b.line);
-                _gameControl.Line = b.line;
+               _gameControl.Line = b.line;
                 _gameControl.Line.positionCount = 0;
                 IndentifyLineType();
                 RemoveConnectedBall(b.balls);

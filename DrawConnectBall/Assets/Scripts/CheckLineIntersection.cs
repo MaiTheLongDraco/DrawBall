@@ -32,7 +32,7 @@ public class CheckLineIntersection
         Debug.Log(message);
     }
 
-    public void CheckIntersect(Segment segment)
+    public bool IsIntersectOtherLine(Segment segment)
     {
         var otherLines = GetOtherLines();
         // iterate throungh other line and check whether current line segment have intersect with other Line
@@ -40,12 +40,12 @@ public class CheckLineIntersection
         {
             if( IsCrossLine(segment, line))
             {
-                print($"invalid");
-                gameController.Line.positionCount = 0;
-                return;
+                print($"invalid {line.GetComponent<LineType>().lineType} + {gameController.Lines.IndexOf(line)}");
+                return true;
             }
         }
         print("valid");
+        return false;
     }
 
     private List<LineRenderer> GetOtherLines()

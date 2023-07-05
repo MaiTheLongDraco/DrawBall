@@ -38,10 +38,10 @@ public class BallController : MonoBehaviour
     }
     private void ConenectBallHandle()
     {
-        var condition = _gameControl.ConnectedBall.Contains(this);
+        var condition = _gameControl.ConnectedBall.Contains(this)/*&&_gameControl.ConnectedBall.Count>0*/;
         if (condition)
         {
-           // _gameControl.ConnectedBall.RemoveAll(b=>b.type==this.type);
+            _gameControl.ConnectedBall.RemoveAll(b=>b.type==this.type);
             _gameControl.CanUpdateLine = false;
             return;
         }

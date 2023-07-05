@@ -1,11 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
-using UnityEngine.UIElements;
 
 public class GameController : MonoBehaviour
 {
@@ -68,10 +64,10 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        
+
         CreateNewLine();
-        //_line =FindObjectOfType<LineRenderer>();
-        // UpdateLineIndex();
+        _line =FindObjectOfType<LineRenderer>();
+        //UpdateLineIndex();
         _lines = FindObjectsOfType<LineRenderer>().ToList();
     }
     private void Awake()
@@ -84,19 +80,14 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateLineIndex();
         Draw();
     }
 
     private LineRenderer GetCurrentLine()
     {
         // just edit here  
-        if (CurrentLineIndex + 1 > Lines.Count - 1)
-        {
-            return Lines[_currentLineIndex];
-        }
-
-        return Lines[_currentLineIndex+1];
+        Debug.Log(Lines.IndexOf(Line) + " CurrentLineIndex");
+        return Lines[Lines.IndexOf(Line)];
     }
     // get existing line on the scene except current Line
     public List<LineRenderer> GetExistingLines()
@@ -120,19 +111,24 @@ public class GameController : MonoBehaviour
         {
             IsHitBall();
             HandleCanUpdateLine();
-            // _checkLineIntersection.CheckIntersect(_currentSegment);
-            CheckIntersectifConnect();
+            //  HandleIfIntersecting();
+            _checkLineIntersection.IsIntersectOtherLine(_currentSegment);
+            UpdateLineIndex();
         }
 
         //  Debug.Log(isEnterBall + " isEnterBall");
 
     }
-    private void CheckIntersectifConnect()
+    private void HandleIfIntersecting()
     {
-        if (!Connected) return;
-            _checkLineIntersection.CheckIntersect(_currentSegment);
-
+        var isIntersect = _checkLineIntersection.IsIntersectOtherLine(_currentSegment);
+        if (isIntersect)
+        {
+            Line.positionCount = 0;
+        }
+        else UpdateLine();
     }
+   
     // =================================this segment handle draw line==================================
     private void HandleCanUpdateLine()
     {
@@ -171,6 +167,7 @@ public class GameController : MonoBehaviour
         isDrawing = true;
         _line.positionCount = 1;
         _line.SetPosition(0, GetNewPoint());
+        //CreateNewLine();
     }
     private bool CheckIsDrawing()
     {
@@ -240,6 +237,7 @@ public class GameController : MonoBehaviour
         if (hit)
         {
             _secondBall = hit.collider.gameObject.GetComponent<BallController>();
+            if (_secondBall.transform == _startBall.transform) return;
             HandleListConnectedBall(_secondBall);
             HandleIfSameType();
         }
@@ -256,8 +254,9 @@ public class GameController : MonoBehaviour
     }
     private void HandleIfSameType()
     {
+        
         Vector2 mousePos = GetNewPoint();
-        if (_startBall.type == _secondBall.type&&_line.positionCount>0)
+        if (_startBall.type == _secondBall.type && _line.positionCount > 0)
         {
             if (Vector2.Distance(_line.GetPosition(_line.positionCount - 1), _secondBall.transform.position) <= _distance)
             {
@@ -268,15 +267,18 @@ public class GameController : MonoBehaviour
                 StopDraw();
                 ResetDrawNumber();
                 HandleIfOverLineNeed();
-                GrabNextLine();
+                // GrabNextLine();
             }
-        }
+        } else if (_startBall.type != _secondBall.type) {
+            StopDraw();
+            ResetLine();
+        } 
         else
         {
             _connected = false;
             Debug.Log("dont Have the same type");
-            //ResetLine();
-            ReturnResetLine();
+           ResetLine();
+           // ReturnResetLine();
         }
     }
 
