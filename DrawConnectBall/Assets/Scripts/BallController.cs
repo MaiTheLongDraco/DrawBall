@@ -9,6 +9,7 @@ using UnityEngine.EventSystems;
 public class BallController : MonoBehaviour
 {
     [SerializeField] private GameController _gameControl;
+    [SerializeField] private CheckLineIntersection _lineIntersect;
     public enum BallType
     {
         RED_BALL,
@@ -22,6 +23,7 @@ public class BallController : MonoBehaviour
     void Start()
     {
         _gameControl = FindObjectOfType<GameController>();
+        _lineIntersect = new CheckLineIntersection(_gameControl);
     }
     private void OnMouseDown()
     {
@@ -31,9 +33,12 @@ public class BallController : MonoBehaviour
         _gameControl.NumberOfDraw--;
         GrantAddBallOrNot();
     }
+    private void OnMouseExit()
+    {
+    }
     private void ConenectBallHandle()
     {
-        var condition = _gameControl.ConnectedBall.Contains(this)/*&&_gameControl.ConnectedBall.Count>0*/;
+        var condition = _gameControl.ConnectedBall.Contains(this);
         if (condition)
         {
            // _gameControl.ConnectedBall.RemoveAll(b=>b.type==this.type);

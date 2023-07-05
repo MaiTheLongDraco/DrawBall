@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
+using UnityEngine.UIElements;
 
 public class GameController : MonoBehaviour
 {
@@ -13,6 +15,7 @@ public class GameController : MonoBehaviour
     #region Close foor modification
     private BallController _startBall;
     private BallController _secondBall;
+    private CheckLineIntersection _checkLineIntersection;
     private List<BallController> _balls;
     private List<BallController> _connectedBall;
     [SerializeField] private float _distance;
@@ -21,7 +24,7 @@ public class GameController : MonoBehaviour
     private bool isEnterBall = false;
     private int _currentLineIndex = 0;
     private LineType _lineType;
-
+    private Segment _currentSegment = new Segment(Vector2.one * -1f, Vector2.one * -1f);
     [SerializeField] private int _numberOfDraw;
     [SerializeField] private LineRenderer _line;
     [SerializeField] private GameObject _linePrefab;
@@ -29,6 +32,9 @@ public class GameController : MonoBehaviour
     [SerializeField] private List<LineRenderer> _usedLine;
     // [SerializeField]private Dictionary<int,LineRenderer> dict_lines;
     [SerializeField] private int _resetDrawNumber;
+    //[SerializeField] private float _timePerDraw;
+    //[SerializeField] private float reset_timePerDraw;
+    [SerializeField] private float _threshHold;
     private bool _canUpdateLine;
 
     #endregion
@@ -56,11 +62,13 @@ public class GameController : MonoBehaviour
         set => _connects = value;
     }
 
+
     //public Dictionary<int, LineRenderer> Dict_lines { get => dict_lines; set => dict_lines = value; }
     #endregion
 
     void Start()
     {
+        
         CreateNewLine();
         //_line =FindObjectOfType<LineRenderer>();
         // UpdateLineIndex();
@@ -70,6 +78,7 @@ public class GameController : MonoBehaviour
     {
         _balls = new List<BallController>();
         _connectedBall = new List<BallController>();
+        _checkLineIntersection= new CheckLineIntersection(this);   
     }
 
     // Update is called once per frame
@@ -77,6 +86,25 @@ public class GameController : MonoBehaviour
     {
         UpdateLineIndex();
         Draw();
+    }
+
+    private LineRenderer GetCurrentLine()
+    {
+        // just edit here  
+        if (CurrentLineIndex + 1 > Lines.Count - 1)
+        {
+            return Lines[_currentLineIndex];
+        }
+
+        return Lines[_currentLineIndex+1];
+    }
+    // get existing line on the scene except current Line
+    public List<LineRenderer> GetExistingLines()
+    {
+        var result = new List<LineRenderer>();
+        result.AddRange(Lines);
+        result.Remove(GetCurrentLine());
+        return result;
     }
     private void UpdateLineIndex()
     {
@@ -90,28 +118,42 @@ public class GameController : MonoBehaviour
         if (!isEnterBall) return;
         if (check)
         {
-            // CreateNewLine();
             IsHitBall();
             HandleCanUpdateLine();
+            // _checkLineIntersection.CheckIntersect(_currentSegment);
+            CheckIntersectifConnect();
         }
+
         //  Debug.Log(isEnterBall + " isEnterBall");
+
+    }
+    private void CheckIntersectifConnect()
+    {
+        if (!Connected) return;
+            _checkLineIntersection.CheckIntersect(_currentSegment);
 
     }
     // =================================this segment handle draw line==================================
     private void HandleCanUpdateLine()
     {
-        if (!_canUpdateLine)
+        if (!CanUpdateLine)
             return;
         UpdateLine();
+    }
 
+    private bool CanUpdateDraw()
+    {
+        if (_currentSegment.GetLeght() < _threshHold) return false;
+        return true;
     }
 
     private void UpdateLine()
     {
-
+      // if (!CanUpdateDraw()) return;
         var position = _line.positionCount;
         _line.positionCount = position + 1;
-        _line.SetPosition(position, GetMousePos());
+        _line.SetPosition(position, GetNewPoint());
+        DrawDebugTest(_currentSegment);
     }
 
 
@@ -128,7 +170,7 @@ public class GameController : MonoBehaviour
     {
         isDrawing = true;
         _line.positionCount = 1;
-        _line.SetPosition(0, GetMousePos());
+        _line.SetPosition(0, GetNewPoint());
     }
     private bool CheckIsDrawing()
     {
@@ -148,26 +190,58 @@ public class GameController : MonoBehaviour
         return isDrawing;
     }
 
-    private Vector3 GetMousePos()
+    [SerializeField]
+    List<Vector3> _lastSegment;
+    List<GameObject> _lastSegmentGO;
+
+    [SerializeField]
+    private GameObject _debugPoint;
+    
+    public void DrawDebugTest(Segment segment)
+    {
+        Debug.Log($"IS _lastSegmentGO != null {_lastSegmentGO != null}");
+        if (_lastSegmentGO != null)
+            foreach (var go in _lastSegmentGO)
+                Destroy(go);
+        _lastSegment = new List<Vector3> { segment.startPoint, segment.endPoint };
+        _lastSegmentGO = new List<GameObject>();
+        StartCoroutine(CreateDebugLine(segment.startPoint, segment.endPoint));
+        Debug.Log($"call: {segment.startPoint} - {segment.endPoint}");
+        Debug.DrawLine(segment.startPoint, segment.endPoint);
+    }
+    private IEnumerator CreateDebugLine(Vector3 segmentStart, Vector3 segmentEnd)
+    {
+        if (_lastSegmentGO != null)
+            foreach (var go in _lastSegmentGO)
+                Destroy(go);
+        yield return new WaitForSeconds(0.005f);
+        var Test1 = Instantiate(_debugPoint, segmentStart, Quaternion.identity);
+        Test1.transform.position = segmentStart;
+        yield return new WaitForSeconds(0.005f);
+        var Test2 = Instantiate(_debugPoint, segmentEnd, Quaternion.identity);
+        Test2.transform.position = segmentEnd;
+        _lastSegmentGO.Add(Test1);
+        _lastSegmentGO.Add(Test2);
+    }
+
+    private Vector3 GetNewPoint()
     {
         var pos = Input.mousePosition;
         pos.z = 10f;
-        return Camera.main.ScreenToWorldPoint(pos);
+        var point = Camera.main.ScreenToWorldPoint(pos);
+        _currentSegment = new Segment(_currentSegment.endPoint, point);
+        return point;
     }
     private void IsHitBall()
     {
-        Vector2 mousePos = GetMousePos();
+        Vector2 mousePos = GetNewPoint();
         RaycastHit2D hit;
         hit = Physics2D.Raycast(mousePos, Vector2.zero);
         if (hit)
         {
-            // _numberOfDraw--;
             _secondBall = hit.collider.gameObject.GetComponent<BallController>();
             HandleListConnectedBall(_secondBall);
-          //  Debug.Log(_connectedBall.Count + " _connectedBall.Count");
             HandleIfSameType();
-            //Debug.Log("startPoint " + _startBall.name);
-            //Debug.Log("secondPoint " + _secondBall.name);
         }
         else
         {
@@ -182,11 +256,9 @@ public class GameController : MonoBehaviour
     }
     private void HandleIfSameType()
     {
-        Vector2 mousePos = GetMousePos();
-        if (_startBall.type == _secondBall.type)
+        Vector2 mousePos = GetNewPoint();
+        if (_startBall.type == _secondBall.type&&_line.positionCount>0)
         {
-           // Debug.Log("Have the same type");
-            //if(Vector2.Distance(mousePos,_secondBall.transform.position)<= _distance)
             if (Vector2.Distance(_line.GetPosition(_line.positionCount - 1), _secondBall.transform.position) <= _distance)
             {
                 _line.positionCount++;
@@ -217,14 +289,7 @@ public class GameController : MonoBehaviour
             connect.balls.Add(_startBall.transform);
             connect.balls.Add(_secondBall.transform);
         connect.line=_line;
-        foreach(var ball in connect.balls)
-        {
-            Debug.LogError(ball.name + "    test add saame ball");
-        }
             AddNewConnect(connect);
-        _connects.ForEach(c => c.balls.ForEach(b => Debug.Log(b.name + "  connected ball name")));
-        Debug.LogAssertion(_connects.Count + "  _connects.Count");
-        
     }
 
     private void HandleUsedLine()
@@ -259,25 +324,19 @@ public class GameController : MonoBehaviour
     }
     private bool IsOverNeededLine()
     {
-        // if (_balls.Count < _lines.Count-1)
         if (_lines.Count > _balls.Count)
-        //if (_balls.Count < dict_lines.Count)
         {
             return true;
         }
-
-
         else return false;
     }
     private void CreateNewLine()
     {
         Debug.Log(_numberOfDraw + " numberofdraw");
         if (_numberOfDraw <= 0) return;
-        var line = Instantiate(_linePrefab, GetMousePos(), Quaternion.identity);
+        var line = Instantiate(_linePrefab, GetNewPoint(), Quaternion.identity);
         line.name = "New Line " ;
         _lines = FindObjectsOfType<LineRenderer>().ToList();
-
-
     }
     public void ReturnResetLine()
     {
@@ -288,6 +347,5 @@ public class GameController : MonoBehaviour
     {
         Connects.Add(connect);
     }
-
 }
 
