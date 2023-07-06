@@ -64,10 +64,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-
-       // CreateNewLine();
         _line =FindObjectOfType<LineRenderer>();
-        //UpdateLineIndex();
         _lines = FindObjectsOfType<LineRenderer>().ToList();
     }
     private void Awake()
@@ -76,14 +73,10 @@ public class GameController : MonoBehaviour
         _connectedBall = new List<BallController>();
         _checkLineIntersection= new CheckLineIntersection(this);   
     }
-
-    // Update is called once per frame
     void Update()
     {
         Draw();
     }
-   
-
     private LineRenderer GetCurrentLine()
     {
         // just edit here  
@@ -101,7 +94,6 @@ public class GameController : MonoBehaviour
    
     private void UpdateLineIndex()
     {
-        //_line = dict_lines[_currentLineIndex];
         _line = _lines[_currentLineIndex];
         _lineType = _line.GetComponent<LineType>();
     }
@@ -116,10 +108,6 @@ public class GameController : MonoBehaviour
             UpdateLineIndex();
              HandleIfIntersecting();
         }
-       
-
-        //  Debug.Log(isEnterBall + " isEnterBall");
-
     }
     private void HandleIfIntersecting()
     {
@@ -129,7 +117,6 @@ public class GameController : MonoBehaviour
             // CanUpdateLine = false;
             //Line.positionCount = 0;
         }
-        else CanUpdateLine = true;
     }
    
     // =================================this segment handle draw line==================================
@@ -224,10 +211,10 @@ public class GameController : MonoBehaviour
     }
 
 
-    public void ShowDebugPoint(Vector3 point)
+    public void ShowDebugPoint(Vector2 point, Color color)
     {
         var debugPoint = Instantiate(_debugPoint, point, Quaternion.identity);
-        _debugPoint.GetComponent<DebugPoint>().SetColor(Color.green);
+        debugPoint.GetComponent<DebugPoint>().SetColor(color);
         debugPoint.name = "crossed";
         Debug.LogError($"crossed: {point}");
         debugPoint.transform.position = point;
@@ -318,7 +305,7 @@ public class GameController : MonoBehaviour
         var isOverLine = IsOverNeededLine();
         if (isOverLine )
         {
-            _lines.First().enabled = false;
+            //_lines.First().enabled = false;
             return;
         }
         CreateNewLine();
@@ -334,7 +321,8 @@ public class GameController : MonoBehaviour
     }
     private bool IsOverNeededLine()
     {
-        if (_lines.Count > _balls.Count)
+        // Just change the condition of check overLine from _lines.Count > _balls.Count to _lines.Count >= _balls.Count
+        if (_lines.Count >= _balls.Count)
         {
             return true;
         }

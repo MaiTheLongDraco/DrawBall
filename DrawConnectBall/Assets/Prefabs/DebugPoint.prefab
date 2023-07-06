@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _radius: 0.5
-  _color: {r: 0, g: 0, b: 1, a: 1}
+  _color: {r: 0, g: 0.036848783, b: 1, a: 1}
