@@ -32,6 +32,7 @@ public class BallController : MonoBehaviour
         _gameControl.IsEnterBall = true;
         _gameControl.NumberOfDraw--;
         GrantAddBallOrNot();
+   
     }
     private void OnMouseExit()
     {
@@ -51,6 +52,7 @@ public class BallController : MonoBehaviour
             _gameControl.ConnectedBall.Add(this);
         }
     }
+    
     private void GrantAddBallOrNot()
     {
         var _isSameType = _gameControl.Balls.Any(b => b.type == this.type);

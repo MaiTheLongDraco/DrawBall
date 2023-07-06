@@ -65,6 +65,8 @@ public class CheckLineIntersection
             // Check for intersection between the two line segments
             if (AreSegmentsIntersecting(segment.startPoint, segment.endPoint, lineRenderer2Start, lineRenderer2End))
             {
+                gameController.ShowDebugPoint(lineRenderer2Start);
+                gameController.ShowDebugPoint(lineRenderer2End);
                 return true; // Lines cross over
             }
         }

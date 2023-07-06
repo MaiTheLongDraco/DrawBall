@@ -8,6 +8,9 @@ public class DebugPoint : MonoBehaviour
     private float _radius = 0.5f;
     [SerializeField]
     private Color _color = Color.blue;
+
+    public void SetColor(Color color)
+    { _color = color; }
     private void OnDrawGizmos()
     {
         Gizmos.color = _color;

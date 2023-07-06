@@ -23,10 +23,12 @@ public class LineSwich : MonoBehaviour
     }
     private void OnMouseDown()
     {
+        _gameControl.GetNewLine();
         HandleAddConBallPermission();
         IndentifyLineType();
         SetLineColor();
     }
+   
     private void IndentifyLineType()
     {
         var lineType = _gameControl.Line.GetComponent<LineType>().lineType;
@@ -67,6 +69,7 @@ public class LineSwich : MonoBehaviour
                 IndentifyLineType();
                 RemoveConnectedBall(b.balls);
                 _gameControl.CanUpdateLine = true;
+                _gameControl.Connected = false;
             }
         }
     }

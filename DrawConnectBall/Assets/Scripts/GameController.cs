@@ -65,7 +65,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
 
-        CreateNewLine();
+       // CreateNewLine();
         _line =FindObjectOfType<LineRenderer>();
         //UpdateLineIndex();
         _lines = FindObjectsOfType<LineRenderer>().ToList();
@@ -82,6 +82,7 @@ public class GameController : MonoBehaviour
     {
         Draw();
     }
+   
 
     private LineRenderer GetCurrentLine()
     {
@@ -97,6 +98,7 @@ public class GameController : MonoBehaviour
         result.Remove(GetCurrentLine());
         return result;
     }
+   
     private void UpdateLineIndex()
     {
         //_line = dict_lines[_currentLineIndex];
@@ -111,10 +113,10 @@ public class GameController : MonoBehaviour
         {
             IsHitBall();
             HandleCanUpdateLine();
-            //  HandleIfIntersecting();
-            _checkLineIntersection.IsIntersectOtherLine(_currentSegment);
             UpdateLineIndex();
+             HandleIfIntersecting();
         }
+       
 
         //  Debug.Log(isEnterBall + " isEnterBall");
 
@@ -124,9 +126,10 @@ public class GameController : MonoBehaviour
         var isIntersect = _checkLineIntersection.IsIntersectOtherLine(_currentSegment);
         if (isIntersect)
         {
-            Line.positionCount = 0;
+            // CanUpdateLine = false;
+            //Line.positionCount = 0;
         }
-        else UpdateLine();
+        else CanUpdateLine = true;
     }
    
     // =================================this segment handle draw line==================================
@@ -167,7 +170,6 @@ public class GameController : MonoBehaviour
         isDrawing = true;
         _line.positionCount = 1;
         _line.SetPosition(0, GetNewPoint());
-        //CreateNewLine();
     }
     private bool CheckIsDrawing()
     {
@@ -221,6 +223,15 @@ public class GameController : MonoBehaviour
         _lastSegmentGO.Add(Test2);
     }
 
+
+    public void ShowDebugPoint(Vector3 point)
+    {
+        var debugPoint = Instantiate(_debugPoint, point, Quaternion.identity);
+        _debugPoint.GetComponent<DebugPoint>().SetColor(Color.green);
+        debugPoint.name = "crossed";
+        Debug.LogError($"crossed: {point}");
+        debugPoint.transform.position = point;
+    }
     private Vector3 GetNewPoint()
     {
         var pos = Input.mousePosition;
@@ -266,18 +277,17 @@ public class GameController : MonoBehaviour
                 HandleUsedLine();
                 StopDraw();
                 ResetDrawNumber();
-                HandleIfOverLineNeed();
-                // GrabNextLine();
+                //HandleIfOverLineNeed();
             }
         } else if (_startBall.type != _secondBall.type) {
             StopDraw();
             ResetLine();
-        } 
+        }
         else
         {
-            _connected = false;
-            Debug.Log("dont Have the same type");
-           ResetLine();
+           // _connected = false;
+           // Debug.Log("dont Have the same type");
+           //ResetLine();
            // ReturnResetLine();
         }
     }
@@ -291,7 +301,7 @@ public class GameController : MonoBehaviour
             connect.balls.Add(_startBall.transform);
             connect.balls.Add(_secondBall.transform);
         connect.line=_line;
-            AddNewConnect(connect);
+        AddNewConnect(connect);
     }
 
     private void HandleUsedLine()
@@ -301,28 +311,26 @@ public class GameController : MonoBehaviour
             _usedLine.Add(_line);
             AddConnectedBall();
         }
-
     }
 
     private void HandleIfOverLineNeed()
     {
         var isOverLine = IsOverNeededLine();
-        if (isOverLine)
+        if (isOverLine )
         {
             _lines.First().enabled = false;
             return;
         }
         CreateNewLine();
     }
+    
+    public void GetNewLine()
+    {
+        HandleIfOverLineNeed();
+    }
     private void ResetDrawNumber()
     {
         _numberOfDraw = _resetDrawNumber;
-    }
-    private void GrabNextLine()
-    {
-        var isLineIndexOver = _currentLineIndex < 0;
-        if (!_connected || isLineIndexOver) return;
-      //  _currentLineIndex = _lines.Count - 2;
     }
     private bool IsOverNeededLine()
     {
@@ -335,11 +343,13 @@ public class GameController : MonoBehaviour
     private void CreateNewLine()
     {
         Debug.Log(_numberOfDraw + " numberofdraw");
-        if (_numberOfDraw <= 0) return;
+        if (_numberOfDraw < 0) return;
         var line = Instantiate(_linePrefab, GetNewPoint(), Quaternion.identity);
         line.name = "New Line " ;
+        _line = FindObjectOfType<LineRenderer>();
         _lines = FindObjectsOfType<LineRenderer>().ToList();
     }
+ 
     public void ReturnResetLine()
     {
         ResetLine();
