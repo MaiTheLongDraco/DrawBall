@@ -1,0 +1,907 @@
+fileFormatVersion: 2
+guid: 72f118e69404b824a8980107f38394e0
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: IdfaAuthorizationSpriteAtlas_0
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 432
+        width: 310
+        height: 592
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5576ec3c27460b842993a9a8822f8196
+      internalID: -2098938631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdfaAuthorizationSpriteAtlas_1
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 702
+        width: 5
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5b1b431829f81646921d5dc6f83067a
+      internalID: 1194072674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdfaAuthorizationSpriteAtlas_2
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 432
+        width: 13
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e54730356efe32c459eb1ca64aefba94
+      internalID: 144217493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdfaAuthorizationSpriteAtlas_3
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 432
+        width: 13
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e5f7e2d71e2bcc44a1a713cb7802e63
+      internalID: -1113333966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdfaAuthorizationSpriteAtlas_4
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 432
+        width: 13
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb2fc03f5d441524fb40553833a636d5
+      internalID: -281478149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdfaAuthorizationSpriteAtlas_5
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 432
+        width: 13
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4d12ab0beee74342863f009c5aa6c6b
+      internalID: 1298325278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdfaAuthorizationSpriteAtlas_6
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 432
+        width: 13
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2adc95e2b9c6fb04994d63b6f2452091
+      internalID: 1080415627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdfaAuthorizationSpriteAtlas_7
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 432
+        width: 13
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e85afea0d5a0854e9678023dc308893
+      internalID: -464154602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdfaAuthorizationSpriteAtlas_8
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 690
+        width: 5
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c98586469315014c84c436d897694c5
+      internalID: -206290074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdfaAuthorizationSpriteAtlas_9
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 426
+        width: 5
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 098af180c95acc349959945baa88fc6e
+      internalID: -570109909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdfaAuthorizationSpriteAtlas_10
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 666
+        width: 4
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b32f1baea2e54c44eb21eafd3d892a53
+      internalID: 213951728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdfaAuthorizationSpriteAtlas_11
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 672
+        width: 6
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9a6083b390e12b4281c93e01cac6c63
+      internalID: 1629187105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdfaAuthorizationSpriteAtlas_12
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 642
+        width: 4
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a66fc991248c3d54f9108a2c271be095
+      internalID: 649788097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdfaAuthorizationSpriteAtlas_13
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 648
+        width: 6
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2a00bcb5e6d8c24ca976f8531d6c244
+      internalID: 263006598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdfaAuthorizationSpriteAtlas_14
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 618
+        width: 4
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6efd631a286ce0458eccd99eb83f8fc
+      internalID: -1092262044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdfaAuthorizationSpriteAtlas_15
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 624
+        width: 6
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cbed9f322bb7924db40fcb13ca7b96d
+      internalID: 114514269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdfaAuthorizationSpriteAtlas_16
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 594
+        width: 4
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 224776a914ad24b42babf2339890d159
+      internalID: -1656294880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdfaAuthorizationSpriteAtlas_17
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 600
+        width: 6
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 179d616bf719a59478d5b7726f013785
+      internalID: -426198961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdfaAuthorizationSpriteAtlas_18
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 570
+        width: 4
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce06e663a5a0f5c42972c5f40b8fa9b3
+      internalID: -1598685828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdfaAuthorizationSpriteAtlas_19
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 576
+        width: 6
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4257529f6f55af949a944f9824e37219
+      internalID: 1942433589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdfaAuthorizationSpriteAtlas_20
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 546
+        width: 4
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f528537631e069643a6e6c63609563d4
+      internalID: -1247124223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdfaAuthorizationSpriteAtlas_21
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 552
+        width: 6
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 734ed7637efcb8a41bf5661614353285
+      internalID: -2123735960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdfaAuthorizationSpriteAtlas_22
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 522
+        width: 4
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ffdac9259ebdc04b928bfdbc3c4a42d
+      internalID: -172095931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdfaAuthorizationSpriteAtlas_23
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 528
+        width: 6
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e19b499688d402840a4a2994e0b43f76
+      internalID: -686531056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdfaAuthorizationSpriteAtlas_24
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 498
+        width: 4
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c42f0e43c4378e64a9f95885b7a928c2
+      internalID: 317855545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdfaAuthorizationSpriteAtlas_25
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 504
+        width: 6
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae7c70fbcd4825c4299415316a987837
+      internalID: 899244674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdfaAuthorizationSpriteAtlas_26
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 474
+        width: 4
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfeb53c2957e817419c70314d5fd0b18
+      internalID: -578475666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdfaAuthorizationSpriteAtlas_27
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 480
+        width: 6
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ce7010a6ce145543a22d5c69cb2bda3
+      internalID: -1362999994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdfaAuthorizationSpriteAtlas_28
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 450
+        width: 4
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ccc03b5b1f16424fa5b031daf7f14da
+      internalID: -1118015070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdfaAuthorizationSpriteAtlas_29
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 456
+        width: 6
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f84217b8b7e0afb419d144c01662d9fa
+      internalID: 1134397140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdfaAuthorizationSpriteAtlas_30
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 432
+        width: 4
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16618599049ebc8479640f7e180c048b
+      internalID: 2001774919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdfaAuthorizationSpriteAtlas_31
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 432
+        width: 6
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5376902e16c29854486db05770ec2080
+      internalID: 1531647619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdfaAuthorizationSpriteAtlas_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 905
+        height: 430
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76835619678ab3d468f229240a5ff997
+      internalID: 552446595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdfaAuthorizationSpriteAtlas_33
+      rect:
+        serializedVersion: 2
+        x: 905
+        y: 0
+        width: 91
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfc8d975dcb5b49418f21b1a0f87e86b
+      internalID: 86569023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      IdfaAuthorizationSpriteAtlas_0: -2098938631
+      IdfaAuthorizationSpriteAtlas_1: 1194072674
+      IdfaAuthorizationSpriteAtlas_10: 213951728
+      IdfaAuthorizationSpriteAtlas_11: 1629187105
+      IdfaAuthorizationSpriteAtlas_12: 649788097
+      IdfaAuthorizationSpriteAtlas_13: 263006598
+      IdfaAuthorizationSpriteAtlas_14: -1092262044
+      IdfaAuthorizationSpriteAtlas_15: 114514269
+      IdfaAuthorizationSpriteAtlas_16: -1656294880
+      IdfaAuthorizationSpriteAtlas_17: -426198961
+      IdfaAuthorizationSpriteAtlas_18: -1598685828
+      IdfaAuthorizationSpriteAtlas_19: 1942433589
+      IdfaAuthorizationSpriteAtlas_2: 144217493
+      IdfaAuthorizationSpriteAtlas_20: -1247124223
+      IdfaAuthorizationSpriteAtlas_21: -2123735960
+      IdfaAuthorizationSpriteAtlas_22: -172095931
+      IdfaAuthorizationSpriteAtlas_23: -686531056
+      IdfaAuthorizationSpriteAtlas_24: 317855545
+      IdfaAuthorizationSpriteAtlas_25: 899244674
+      IdfaAuthorizationSpriteAtlas_26: -578475666
+      IdfaAuthorizationSpriteAtlas_27: -1362999994
+      IdfaAuthorizationSpriteAtlas_28: -1118015070
+      IdfaAuthorizationSpriteAtlas_29: 1134397140
+      IdfaAuthorizationSpriteAtlas_3: -1113333966
+      IdfaAuthorizationSpriteAtlas_30: 2001774919
+      IdfaAuthorizationSpriteAtlas_31: 1531647619
+      IdfaAuthorizationSpriteAtlas_32: 552446595
+      IdfaAuthorizationSpriteAtlas_33: 86569023
+      IdfaAuthorizationSpriteAtlas_4: -281478149
+      IdfaAuthorizationSpriteAtlas_5: 1298325278
+      IdfaAuthorizationSpriteAtlas_6: 1080415627
+      IdfaAuthorizationSpriteAtlas_7: -464154602
+      IdfaAuthorizationSpriteAtlas_8: -206290074
+      IdfaAuthorizationSpriteAtlas_9: -570109909
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
